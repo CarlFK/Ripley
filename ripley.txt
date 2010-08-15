@@ -26,9 +26,9 @@ Regardless of why he did it, he did, and that's awesome.
 
 Features:
 
-Familiarity breeds contempt, so if you are familiar with just about any programming language, you will be comfortable with Python.  Many of its features have roots in other languages:   Van Rossum stated that "Python acquired lambda, reduce(), filter() and map(), courtesy of (I believe) a Lisp hacker who missed them and submitted working patches."  Notable among these are the Modula-3 inspired keyword arguments (which are also similar to Common Lisp's keyword arguments),  Python 2.0 introduced list comprehensions, a feature borrowed from the functional programming languages SETL and Haskell.
+If you are familiar with just about any programming language, you will be comfortable with Python.  Many of its features have roots in other languages:   Van Rossum stated that "Python acquired lambda, reduce(), filter() and map(), courtesy of (I believe) a Lisp hacker who missed them and submitted working patches."  Notable among these are the Modula-3 inspired keyword arguments (which are also similar to Common Lisp's keyword arguments),  Python 2.0 introduced list comprehensions, a feature borrowed from the functional programming languages SETL and Haskell.
 
-In addition to a nice language, the python developers maintain a large standard library, commonly cited as one of Python's greatest strengths, providing pre-written tools suited to many tasks. This is deliberate and has been described as a "batteries included" Python philosophy.  Much of it is written in python, but a considerable amount is written in C for performance optimizations.  In addition, there is PyPI, the Python Package Index - a repository of over 5000 modules that have the same license as Python.  And just in case you still need something, there are countless projects where people have made their code available (sf.net, code.google.com, launchpad.net, etc.)
+In addition to a nice language, python developers maintain a large standard library, commonly cited as one of Python's greatest strengths, providing pre-written tools suited to many tasks. This is deliberate and has been described as a "batteries included" Python philosophy.  Much of it is written in python, but a considerable amount is written in C for performance optimizations.  In addition, there is PyPI, the Python Package Index - a repository of over 5000 modules that have the same license as Python.  And just in case you still need something, there are countless projects where people have made their code available (sf.net, code.google.com, launchpad.net, etc.)
 
 
 Implementations:
@@ -71,10 +71,12 @@ True
 False
 
 
+(todo: go look up python 3 change with respect to float/int)
 Floats have a dot:
 >>> 1.2
 1.2
 
+(todo: go look up python 3 change here)
 Integers don't:
 >>> 2+2
 4
