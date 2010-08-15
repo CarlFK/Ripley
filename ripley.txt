@@ -1,0 +1,559 @@
+The Python that makes Python Python.
+
+Intro:
+
+You can write anything in anything, it's just a matter of effort.   
+
+Here are quotes about Python that sum up my feelings:
+
+Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.  - http://docs.python.org/tutorial/
+
+Python is a general-purpose, high-level programming language.[2] Its design philosophy emphasizes programmer productivity and code readability.[3] Python's core syntax and semantics are minimalistic, while the standard library is large and comprehensive. Its use of whitespace as block delimiters is unusual among popular programming languages. - http://en.wikipedia.org/wiki/Python_(programming_language)
+
+Python was intended to be a highly readable language. It aims toward an uncluttered visual layout, frequently using English keywords where other languages use punctuation.
+
+To describe something as clever is NOT considered a compliment in the Python culture.
+
+History:
+
+Python was first released by Guido van Rossum in 1991.  So the obvious question is:
+Q. Why did you write the Python interpreter in the first place?
+I don't find the answer very exciting, but most people want to know, so here it is:
+A: One, I was working at Centrum voor Wiskunde en Informatica (CWI) as a programmer on the Amoeba distributed operating system, and I was thinking that an interpreted language would be useful for writing and testing administration scripts. Second, I had previously worked on the ABC project, which had developed a programming language intended for non-technical users. I still had some interesting ideas left over from ABC, and wanted to use them.
+I had a two-week Christmas holiday with nothing to do, and needed a project that I could do on my Mac without having to log into CWI's computers. That was when the first bits of the the Python interpreter were written.
+
+Regardless of why he did it, he did, and that's awesome. 
+
+Features:
+
+Familiarity breeds contempt, so if you are familiar with just about any programming language, you will be comfortable with Python.  Many of its features have roots in other languages:   Van Rossum stated that "Python acquired lambda, reduce(), filter() and map(), courtesy of (I believe) a Lisp hacker who missed them and submitted working patches."  Notable among these are the Modula-3 inspired keyword arguments (which are also similar to Common Lisp's keyword arguments),  Python 2.0 introduced list comprehensions, a feature borrowed from the functional programming languages SETL and Haskell.
+
+In addition to a nice language, the python developers maintain a large standard library, commonly cited as one of Python's greatest strengths, providing pre-written tools suited to many tasks. This is deliberate and has been described as a "batteries included" Python philosophy.  Much of it is written in python, but a considerable amount is written in C for performance optimizations.  In addition, there is PyPI, the Python Package Index - a repository of over 5000 modules that have the same license as Python.  And just in case you still need something, there are countless projects where people have made their code available (sf.net, code.google.com, launchpad.net, etc.)
+
+
+Implementations:
+CPython - Mac, Unix (Linux, Solaris, AIX, etc), Windows, HPUX, BeOS, iPod, OS2,
+Palm, PS2, xBox and more.
+Jython - runs in Java
+IronPython, Python.net - runs in the .net clr (so Mono too)
+PyPy - Python written in Python, complies Reduced Python to C code.
+PyS60 - Python for S60 mobile phones.
+Open Office, Gimp, InkScape, Pidgin, xChat, vim, emacs - all have python
+embedded in them (I think it is typically CPython, not sure the details.)
+
+Environments: 
+Python, IPython, Idle, Active Python, .net, emacs, vim, Eclipse and more.
+Future:
+Python Enhancement Proposal (or "PEP") - http://python.org/dev/peps  includes things like:
+ coding style, database access, python development workflow.
+Python 3000 - break backwards compatibility 
+
+
+Installing: 
+Python comes with most Linux distros and all Macs.  For Windows http://python.org/ click Download click Windows Installer, follow the install wizard. 
+
+
+Programing:
+Just about everything we need to cover will be demonstrated at the Python prompt.  In general, anything entered at the prompt is evaluated and if there is a resulting value, it is displayed.   This makes the Hello World program very easy:
+
+>>> 'Hello World!'
+'Hello World!'
+
+
+That was an example of an expression (yes, a very simple one, in this case a constant) that evaluated to a string data type.  The other common data types are: boolean, numbers (integers, float, imaginary), NoneType, lists, tuples, and dictionaries.   What you need to know about any programming language is the syntax used to represent its features.  Most of what we will be learning in this study is the python syntax.
+
+So a quick run though how the mentioned types are represented:
+
+There are 2 Bools: True and False.  There isn't much more that needs to be said about this.
+>>> True
+True
+>>> False
+False
+
+
+Floats have a dot:
+>>> 1.2
+1.2
+
+Integers don't:
+>>> 2+2
+4
+
+You can do math on strings too:
+>>> 'ab'*3+'c'
+'abababc'
+
+
+Parentheses are used to specify order of operation:
+>>> 3*(1+1)
+6
+
+complex number:
+>>> 4+5j
+(4+5j)
+
+
+If you start a something that requires an end something but end the line first, the interpreter continues until you close it off:
+>>> (5+5
+... +5+5+
+... 5)
+25
+
+
+You can also use \ to continue a line:
+>>> 2+2\
+... +2
+6
+
+
+Strings can be delimited with either single, double or triple quotes.  Single and double are interchangeable, which makes it easy to deal with embedded quotes:
+>>> "I don't like spam."
+"I don't like spam."
+
+
+You can also use prinf's escape syntax:
+>>> 'He said, "it\'s a dead parrot!"'
+'He said, "it\'s a dead parrot!"'
+
+Yeah, that's not what humans like to see.  That is because the python shell tries to display values in valid python syntax.  To print the value in a human friendly format, use the print command:
+>>> print 'He said, "it\'s a dead parrot!"'
+He said, "it's a dead parrot!"
+
+Triple quotes (either 3 single or 3 doubles) can contain single and double quotes, and span lines too:
+>>> """He said, "it's a dead parrot!"
+... In a polite voice, the shopkeeper replied "It's moving" and gave it a slight nudge."""
+'He said, "it\'s a dead parrot!"\nIn a polite voice, the shopkeeper replied "It\'s moving" and gave it a slight nudge.'
+
+The print command will render newlines, tabs, etc.  For now trust that it does what you want, but feel free to experiment on your own time.  (python 3 alert: print is replaced by the print() function.)
+
+Back to the standard data types.   Remember, these are all types: boolean, numbers, lists, tuples, and dictionaries.   Lists, tuples, and dictionaries are data types, just like the others.
+
+A list is a comma separated list of values, surrounded by brackets:
+>>> ['x','y','z',101,3.141,'spam']
+['x', 'y', 'z', 101, 3.141, 'spam']
+
+A tuple is pretty much the same thing: a comma separated list of values, surrounded by parentheses:
+>>> ('x','y','z',101,3.141,'spam')
+('x', 'y', 'z', 101, 3.141, 'spam')
+
+The difference is: a list can be changed, a tuple can't.  This is also called mutable and immutable.   They are both examples of an iteratable.  More on iterables later.
+
+Using parentheses for both order of operation and tuples causes a minor problem when representing a one item tuple.  In this case, an extra comma at the end specifies a tuple:
+>>> (2,)
+(2,)
+
+Which can be used on any number of items:
+>>> (1,2,3,)
+(1, 2, 3)
+
+Lists and tuples can be mixed and nested to any level.  Here is a list of 3 tuples, where each tuple is a tuple of ints and an int.
+>>> [((640,480),8),((800,600),16),((1280,800),24)]
+[((640, 480), 8), ((800, 600), 16), ((1280, 800), 24)]
+
+
+Dictionaries are a comma separated list of key:value pairs surrounded by braces. 
+>>> {'first':'Carl', 'hands':2, 'shoe size':10.5}
+{'shoe size': 10.5, 'hands': 2, 'first': 'Carl'}
+
+Unlike lists and tuples, the order of the pairs is not maintained.   
+
+Keys can be any mutable value.  Values can be anything.   yes, anything.  We will see useful examples later.
+
+
+That is it for built in data types.  If you are wondering about datetimes, trust that there is wonderful support for them in the datetime, calendar and dateutil modules, which is outside the scope of this discussion.  
+
+Everything is exposed as an object.   Objects have attributes, attributes are either values or methods.
+
+String objects have a method named upper:
+>>> 'spam'.upper()
+'SPAM'
+
+
+The dir() function will return an object's attributes as a list (a python list data type) of strings:
+>>> dir('spam')
+['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__str__', 'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+Notice all the __magic__?    These are 'special' attributes.  You typically don't want to mess with them directly.  They are used by the python language, or when writing code  that hinges on extending or developing a new language.   Some examples: __repr__ returns a string that tries to represent the value in python syntax.  __str__ returns a string that is more human friendly.  Sound familiar?  See, we have been using __repr__ all along, except for the few times we used the print command, which used __str__.  For more on this:  http://docs.python.org/reference/datamodel.html#special-method-names
+
+Other languages have variables; technically, Python doesn't.   But it has something that looks like a var:  It has names.  So don't call it a var.  For a good explanation of this see http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html#other-languages-have-variables
+
+>>> a='eggs'
+>>> a
+'eggs'
+
+>>> a.upper()
+'EGGS'
+
+More than one thing can be assigned at a time:
+>>> a,b=1,3
+>>> a+b
+4
+
+Which is really just syntactic sugar for some __magic__
+>>> a.__add__(b)
+4
+
+"Syntactic Sugar is a term coined by Peter J. Landin for additions to the syntax of a computer language that do not affect its functionality but make it "sweeter" for humans to use. Syntactic sugar gives the programmer an alternative way of coding that is often more practical, more conducive to a better programming style, or more natural to read. However, it does not typically affect the expressiveness of the formalism or permit the language to do something new.   Syntactic sugar can often be easily translated ("desugared") to produce a program in some simpler "core" syntax." - http://en.wikipedia.org/wiki/Syntactic_sugar
+
+An example that everyone should understand: x+=3 is the short form of x=x+3.
+
+Most of what is done in Python is work with the syntactic sugar parts of the language.   This is not a bad thing.   You could write in the core syntax, but both versions get compiled into the exact same byte code, so there is absolutely no gain.   There is a reason to touch 'core' code: to implement your own __magic__ which then you or others will execute via the sugary code.  That's a deep end of the pool that you can stay away from for a quite a while.
+
+Returning to the dictionary:
+>>> d={'first':'Carl', 'hands':2, 'shoe size':10.5}
+>>> d
+{'shoe size': 10.5, 'hands': 2, 'first': 'Carl'}
+
+Items in a dictionary are referenced by their key:
+>>> d['first']
+'Carl'
+>>> d['shoe size']
+10.5
+
+Again, everything is exposed as an object such that the syntax allows you to chain things together:
+>>> d['first'].upper()
+'CARL'
+
+New items can be added:
+>>> d['shirt']='Medium'
+>>> d
+{'shoe size': 10.5, 'hands': 2, 'shirt': 'Medium', 'first': 'Carl'}
+
+The value can be any datatype, including a dictionary:
+>>> d['pants']={'waist':32,'length':34}
+>>> d
+{'shoe size': 10.5, 'hands': 2, 'shirt': 'Medium', 'pants': {'length': 34, 'waist': 32}, 'first': 'Carl'}
+
+Chain things together applies to everything:
+>>> d['pants']['waist']
+32
+
+Dictionaries have the following attributes:
+>>> dir(d)
+['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__doc__', '__eq__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__str__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
+
+
+All of the standard methods (the non __magic ones) of a dictionary are quite common, so it's a good idea to investigate what they all do.  We only have time for a few:
+
+>>> help(d.get)
+get(...)
+    D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.
+
+>>> d.get('first')
+'Carl'
+
+The point of .get() is clear when we use it on key that doesn't exist:
+>>> d.get('last')
+
+And even more clear when we give it a value that we can see:
+>>> print d.get('last','-blank-')
+-blank-
+
+Everything in Python's standard distribution has help.  The help text is stored in doc strings that are part of the source code, which helps keep it in sync with the installed version.  Because it is easy to create this form of documentation, most non-standard modules have decent help too.   Unless you never ever write comments, you will find that it is just 2nd nature to create the docs as you code.  We will look into creating doc strings later when we actually create something.  For now lets just use it:
+>>> help(a.upper)
+upper(...)
+    S.upper() -> string
+    Return a copy of the string S converted to uppercase.
+
+>>> help(1)
+class int(object)
+...
+
+And now for something completely different.  
+
+String formatting - similar to C:
+>>> "It's a %s %s!" % ('dead','parrot')
+"It's a dead parrot!"
+
+Markers can also reference dictionary keys:
+>>> "It's a %(health)s %(animal)s!" % {'health':'dead','animal':'parrot'}
+"It's a dead parrot!"
+
+String formatting is an evaluation preformed just like any other expression.  The % symbol is the operator.  It is not tied to outputting the results, which means the results can be given a reference:
+>>> d={'health':'dead','animal':'parrot'}
+
+>>> a="It's a %(state)s %(animal)s!" % d
+>>> a
+"It's a dead parrot!"
+
+
+We are about to examine list slicing.  Lists are 0 based, and the end of a range is exclusive.   This may seem odd and inconsistent, but once you start using them, you will see it works out just fine.
+
+We can assign a list to a name: 
+>>> a=['x','y','z',101,3.141,'spam']
+>>> a
+['x', 'y', 'z', 101, 3.141, 'spam']
+
+List items are referenced by their index:
+>>> a[0]
+'x'
+
+The index can be applied to the actual list:
+>>> ['x','y','z',101,3.141,'spam'][1]
+'y'
+
+A range of a list returns a list
+>>> ['a','b','c','d','e','f'][2:4]
+['c', 'd']
+
+The range can be unbounded:
+up to 4 (but not including)
+>>> ['a','b','c','d','e','f'][:4]
+['a', 'b', 'c', 'd']
+from 4 to the end:
+>>> ['a','b','c','d','e','f'][4:]
+['e', 'f']
+
+Notice that :4 and 4:  give you both parts of the list.  No overlap, no gap, no +1, no special cases (it works for :0 and 0: too.)
+
+A negative index counts backwards from the end of the list
+>>> ['a','b','c','d','e','f'][-2]
+'e'
+
+Negative index applies to ranges too:
+>>> ['a','b','c','d','e','f'][1:-1]
+['b', 'c', 'd', 'e']
+
+A slice of a list can be assigned values:
+>>> a=['a','b','c','d','e','f']
+>>> a[1]='x'
+>>> a
+['a', 'x', 'c', 'd', 'e', 'f']
+
+
+A slice of a list can be replaced with a list of items.  The number of items being replaced does not have to be the same as the number being replaced with.
+>>> a[2:3]=[30,40,50,60,70]
+>>> a
+['a', 'x', 30, 40, 50, 60, 70, 'd', 'e', 'f']
+
+
+You can iterate over an iterable with a for loop:
+>>> for a in [1,2,3,5,7]:
+...   print a
+1
+2
+3
+5
+7
+
+A list comprehension iterates, evaluates, and returns a list:
+>>> [a*2 for a in [1,2,3,5,7,11]]
+[2, 4, 6, 10, 14, 22]
+
+actually, it will test too:
+>>> [a*2 for a in [1,2,3,5,7,11] if a%2==1]
+[2, 6, 10, 14, 22]
+
+a%2 gets the remainder of a/2, ==1 tests to see if it is 1.  In this case it will be True for odd numbers, and False for even ones.  So it returns a*2 for the odd numbers in the list.
+
+And the resulting list can be a list of anythings:
+
+list of tuples:
+>>> [(a,a*2) for a in [1,2,3,5,7,11] if a%2==1]
+[(1, 2), (3, 6), (5, 10), (7, 14), (11, 22)]
+
+
+List of dictionaries:
+>>> [{'x':a,'y':a*2} for a in [1,2,3,5,7,11] if a%2==1]
+[{'y': 2, 'x': 1}, {'y': 6, 'x': 3}, {'y': 10, 'x': 5}, {'y': 14, 'x': 7}, {'y': 22, 'x': 11}]
+
+
+And in case you forgot, we can chain anything:
+>>> [{'x':a,'y':a*2} for a in [1,2,3,5,7,11] if a%2==1][2]['y']
+10
+
+Yeah, that looks ugly.  Don't write ugly code just because you can.   A man's got to know his limitations.
+
+Strings are interable: 
+>>> 'spam'[1]
+'p'
+
+>>> [a for a in 'spam']
+['s', 'p', 'a', 'm']
+
+remember a,b=1,2?  Same thing:
+>>> [(1, 2), (3, 6), (5, 10), (7, 14), (11, 22)][2]
+(5, 10)
+>>> a,b=[(1, 2), (3, 6), (5, 10), (7, 14), (11, 22)][2]
+>>> a
+5
+>>> b
+10
+
+>>> for a,b in [(1, 2), (3, 6), (5, 10), (7, 14), (11, 22)]:
+...   print a,b
+1 2
+3 6
+5 10
+7 14
+11 22
+
+>>> help()
+help> keywords
+and                 elif                if                  print
+as                  else                import              raise
+assert              except              in                  return
+break               exec                is                  try
+class               finally             lambda              while
+continue            for                 not                 with
+def                 from                or                  yield
+del                 global              pass                
+
+
+The keyword "in" is used to test for set membership.
+>>> 3 in [1,2,3]
+True
+>>> 5 in [1,2,3]
+False
+
+
+There are about 70 functions:
+http://www.python.org/doc/2.5.2/lib/built-in-funcs.html
+
+Our path does not require us to fully understand what they do.
+
+A function can be defined at the prompt.  
+>>> def f(x):
+...  ret=x*2
+...  return ret
+
+>>> f(3)
+6
+
+remember, you can do string math too:
+>>> f('abc')
+'abcabc'
+
+and really not just strings, but any iterable:
+>>> f([1,2,3])
+[1, 2, 3, 1, 2, 3]
+
+And now for something completely different.
+
+Well, not really.  It is just another example of everything bing an object.  In this case, the function is an object, and f is it's name:
+>>> f
+<function f at 0x8c8ac34>
+
+Why would we want to know the memory address?  Just a sec..
+
+Make g another name of the function:
+>>> g=f
+>>> g
+<function f at 0x8c8ac34>
+
+Now you can see both f and g reference the same object.  Not really useful for programming, but kinda handy for getting a grip on how objects have names.
+
+Just to prove it is the same function:
+>>> g(3)
+6
+
+
+Functions have 3 parts: the name 'f', parameter list: (x), the guts: x*2, and the return.
+
+A lamda is just the function without the name.  Well, sort of.  In Python, it's limited to just expressions - no statements.  But that isn't important now.  For now I just want you to see an example. 
+
+Lamda is a keyword:
+>>> b=lambda a:a*3
+>>> b(4)
+12
+>>> b
+<function <lambda> at 0x8ea280c>
+>>> b(4)
+12
+
+You should be asking "How is that different than a function?"  The difference is it's an expression, so you can pass it as a parameter and  let something else evaluate it.  Which cold be done with a named function, then pass the name, but it's sometimes handy to be able to do it without the extra lines of code.
+
+Hopefully you will never need to know about exec.  Its use is frowned upon, but it is part of the language, so lets give it some air time:
+
+>>> a="print 2+2"
+>>> a
+'print 2+2'
+>>> exec a
+4
+
+Up until now everything has been done at the prompt.  I think the rest could too, but it would be tedious, which would distract from learning, so we are relying on some small files provided as part of the lesson.   A quick note:  python finds the files by searching the pythonpath.  This is a list of directories that is constructed when python starts, and can be augmented like any other python list.  How this list is constructed is not important now.
+
+This is also a good place to stop, because the rest is still a very rough draft.
+
+Lets look at a generator:
+
+>>> import e2a
+>>> f=e2a.fib()
+>>> f.next()
+1
+>>> f.next()
+1
+>>> f.next()
+2
+>>> f.next()
+3
+
+>>> l=[1,2,3,'a',1.2,'eggs',(1,2,3)]
+>>> l
+[1, 2, 3, 'a', 1.2, 'eggs', (1, 2, 3)]
+>>> enumerate(l)
+<enumerate object at 0xb78374ac>
+>>> f=enumerate(l)
+>>> f.next()
+(0, 1)
+>>> f.next()
+(1, 2)
+>>> f.next()
+(2, 3)
+>>> f.next()
+(3, 'a')
+
+>>> f=enumerate(l)
+>>> list(f)
+[(0, 1), (1, 2), (2, 3), (3, 'a'), (4, 1.2), (5, 'eggs'), (6, (1, 2, 3))]
+
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> for a in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
+...     print a
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+>>> for a in range(10):
+...     print a
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+>>> for a in range(25,30):
+...     print a
+25
+26
+27
+28
+29
+
+>>> range(100,200,10)
+[100, 110, 120, 130, 140, 150, 160, 170, 180, 190]
+
+>>> xrange(100,200,10)
+xrange(100, 200, 10)
+
+>>> xrange(100, 200, 10).__doc__
+
+'xrange([start,] stop[, step]) -> xrange object\n\nLike range(), but instead of returning a list, returns an object that\ngenerates the numbers in the range on demand.  For looping, this is \nslightly faster than range() and more memory efficient.'
+
+
+
+Add: keyword explosions, **args, datetime/calendar/dateutil.
+

@@ -1,0 +1,11 @@
+Ripley - Python syntax sylabus and an app to present it one step at a time.
+
+The app reads in a text file that contains:
+something to be executed at the python prompt,
+some comentary
+what python will output.
+
+Using Ripley and Python's Read Evaluate Print Loop, lead a group though the basic Python syntax.  The assumption is they know about programming and need to be introduced to Python.
+
+The app will put the command text onto the clipboard so that the leader can paste it into a Python shell.  
+
