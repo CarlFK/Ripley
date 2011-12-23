@@ -1,0 +1,39 @@
+    $ export VERSIONER_PYTHON_PREFER_32_BIT=yes
+    $ ./ripley.py
+
+    diff --git a/ripley.py b/ripley.py
+    index 061e31c..88ab77c 100755
+    --- a/ripley.py
+    +++ b/ripley.py
+    @@ -7,6 +7,7 @@
+     filename = "ripley.txt"
+     
+     ##==============================================================================
+    +import sys
+     import wx
+     import wx.lib.sized_controls as sc
+     import subprocess
+    @@ -102,13 +103,15 @@ class CodeDesc:
+             self.txt2 = txt2
+     
+         def clip(self):
+    -        # wx.Clipboard.UsePrimarySelection(wx.Clipboard(), primary = True)
+    -        # if wx.TheClipboard.Open():
+    -        #     wx.TheClipboard.SetData( wx.TextDataObject("Some text") )
+    -        #     wx.TheClipboard.Close()
+    -
+    -        p = subprocess.Popen('xclip', stdin=subprocess.PIPE)
+    -        p.communicate(self.cmds[self.cmdpos][0])
+    +        if sys.platform == 'darwin':
+    +            wx.Clipboard.UsePrimarySelection(wx.Clipboard(), primary = True)
+    +            if wx.TheClipboard.Open():
+    +                wx.TheClipboard.SetData( wx.TextDataObject(self.cmds[self.cmdpos][0]) )
+    +                wx.TheClipboard.Close()
+    +        else:
+    +            p = subprocess.Popen('xclip', stdin=subprocess.PIPE)
+    +            p.communicate(self.cmds[self.cmdpos][0])
+    +        
+     
+         # def OnClipClicked(self, event):
+         #     self.clip()
+
