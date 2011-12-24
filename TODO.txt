@@ -1,0 +1,5 @@
+Add: 
+  keyword explosions, **args, 
+  datetime/calendar/dateutil.
+
+apply wx_paste.diff.txt to support stuffing keyboard buffers on both OS's.

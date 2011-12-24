@@ -557,5 +557,4 @@ xrange(100, 200, 10)
 
 
 
-Add: keyword explosions, **args, datetime/calendar/dateutil.
 
