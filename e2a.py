@@ -4,8 +4,6 @@
 Example code for python class.
 """
 
-import math 
-
 def dub(x):
     """
     doubles x
@@ -13,16 +11,18 @@ def dub(x):
     ret = x*2
     return ret
 
-def fib(max_digits=2):
+def fib(count):
     """ 
     generate Fibonacci numbers 
     stop when size exceds passed parrameter
     """
 
     x1,x2 = 0,1
-    while math.log(x2,10)<max_digits:
+    counter=0
+    while counter<count:
         yield x1
         x1,x2 = x2,x1+x2
+        counter += 1
     raise StopIteration
 
 if __name__=="__main__":
@@ -33,8 +33,9 @@ if __name__=="__main__":
         print "broken"
 
     print "fib",
-    if list(fib(1)) == [0, 1, 1, 2, 3, 5]:
+    if list(fib(9)) == [0, 1, 1, 2, 3, 5, 8, 13, 21]:
         print "pass"
+        print len(list(fib(9)))
     else:
         print "broken"
 
