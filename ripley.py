@@ -9,7 +9,6 @@ filename = "ripley.txt"
 ##==============================================================================
 import wx
 import wx.lib.sized_controls as sc
-import subprocess
 
 def main():
     app = wx.PySimpleApp()
@@ -102,13 +101,12 @@ class CodeDesc:
         self.txt2 = txt2
 
     def clip(self):
-        # wx.Clipboard.UsePrimarySelection(wx.Clipboard(), primary = True)
-        # if wx.TheClipboard.Open():
-        #     wx.TheClipboard.SetData( wx.TextDataObject("Some text") )
-        #     wx.TheClipboard.Close()
-
-        p = subprocess.Popen('xclip', stdin=subprocess.PIPE)
-        p.communicate(self.cmds[self.cmdpos][0])
+        # gconftool-2 -t str -s /apps/gnome-terminal/keybindings/paste "<Control>v"
+        text=self.cmds[self.cmdpos][0]
+        wx.Clipboard.UsePrimarySelection(wx.Clipboard(), primary = True)
+        if wx.TheClipboard.Open():
+            wx.TheClipboard.SetData( wx.TextDataObject(text) )
+            wx.TheClipboard.Close()
 
     # def OnClipClicked(self, event):
     #     self.clip()
