@@ -32,7 +32,7 @@ In addition to a nice language, python developers maintain a large standard libr
 
 
 Implementations:
-CPython - Mac, Unix (Linux, Solaris, AIX, etc), Windows, HPUX, BeOS, iPod, OS2,
+CPython - Mac, Unix (Linux, Solaris, AIX, etc), Windows, HPUX, BeOS, iPod, OS2,maybe more.  (btw, reference implementation.)
 Palm, PS2, xBox and more.
 Jython - runs in Java
 IronPython, Python.net - runs in the .net clr (so Mono too)
@@ -46,11 +46,11 @@ Python, IPython, Idle, Active Python, .net, emacs, vim, Eclipse and more.
 Future:
 Python Enhancement Proposal (or "PEP") - http://python.org/dev/peps  includes things like:
  coding style, database access, python development workflow.
-Python 3000 - break backwards compatibility 
+Python Version 3 - break backwards compatibility 
 
 
 Installing: 
-Python comes with most Linux distros and all Macs.  For Windows http://python.org/ click Download click Windows Installer, follow the install wizard. 
+Python comes with most Linux distros, all Macs and some Windows (like HP business desktops).  For Windows http://python.org/ click Download click Windows Installer, follow the install wizard. 
 
 
 Programing:
@@ -60,7 +60,7 @@ Just about everything we need to cover will be demonstrated at the Python prompt
 'Hello World!'
 
 
-That was an example of an expression (yes, a very simple one, in this case a constant) that evaluated to a string data type.  The other common data types are: boolean, numbers (integers, float, imaginary), NoneType, lists, tuples, and dictionaries.   What you need to know about any programming language is the syntax used to represent its features.  Most of what we will be learning in this study is the python syntax.
+That was an example of an expression (yes, a very simple one, in this case a constant) that evaluated to a string data type.  The other common data types are: boolean, numbers (integers, decimal, long, float, imaginary), NoneType, lists, tuples, sets and dictionaries.   What you need to know about any programming language is the syntax used to represent its features.  Most of what we will be learning in this study is the python syntax.
 
 So a quick run though how the mentioned types are represented:
 
@@ -306,7 +306,7 @@ from 4 to the end:
 >>> ['a','b','c','d','e','f'][4:]
 ['e', 'f']
 
-Notice that :4 and 4:  give you both parts of the list.  No overlap, no gap, no +1, no special cases (it works for :0 and 0: too.)
+Notice that :4 and 4:  give you both parts of the list.  No overlap, no gap, no +1, no special cases (it works for :0 and 0: too.) Python tends to follow half-open interval.  end-start=length.  
 
 A negative index counts backwards from the end of the list
 >>> ['a','b','c','d','e','f'][-2]
