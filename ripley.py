@@ -4,21 +4,24 @@
 
 # warning, this app stuffs things onto your clipboard.
 
-filename = "ripley.txt"
+# filename = "ripley.txt"
+filename = "b3.txt"
 
 ##==============================================================================
 import wx
 import wx.lib.sized_controls as sc
-import subprocess 
+import subprocess
 
 def main():
-    app = wx.PySimpleApp()
-    
+    app = wx.App()
+
     winsize=(500,300)
     frame = sc.SizedFrame(None, title='Ripley',  pos=(1,1), size=winsize)
     panel = frame.GetContentsPane()
 
     cr = CodeDesc()
+    return
+
     cr.addWidgets(panel, frame)
     cr.refresh()
 
@@ -43,9 +46,10 @@ def parse(filename):
     pre,post=[],[]
     for line in open(filename):
         line=line.strip('\n')
+        print(line)
         if state==0 and line == "Programing:": state=1
         elif state == 1:
-            pre.append(line)            
+            pre.append(line)
             if line.startswith('>>>'):
 # save this one
                 l.append([line[4:],'\n'.join(pre)])
@@ -56,20 +60,20 @@ def parse(filename):
 
     l.append([line[4:],'\n'.join(pre)])
 
-    return l   
+    return l
 
 class CodeDesc:
-    
+
     def __init__(self):
         self.cmds = parse(filename)
-        for c in self.cmds: print c
+        for c in self.cmds: print(c)
         self.cmdpos = 0
         self.clip()
 
     def refresh(self):
         self.txt1.SetValue(self.cmds[self.cmdpos][0])
         self.txt2.SetValue(self.cmds[self.cmdpos][1])
-        
+
     def addWidgets(self, parent, topwindow):
         panel = sc.SizedPanel(parent)
         panel.SetSizerType('horizontal')
@@ -87,11 +91,11 @@ class CodeDesc:
         btn2 = wx.Button(panel, label='Prev')
         btn2.Bind(wx.EVT_BUTTON, self.OnPrevClicked)
         btn2.SetSizerProps(proportion=5, expand=True)
-        
+
         btn3 = wx.Button(panel, label='Next')
         btn3.Bind(wx.EVT_BUTTON, self.OnNextClicked)
         btn3.SetSizerProps(proportion=5, expand=True)
-        
+
         panel2 = sc.SizedPanel(parent)
         panel2.SetSizerType('vertical')
         panel2.SetSizerProps(expand=True, proportion=2)
@@ -117,17 +121,17 @@ class CodeDesc:
 
     # def OnClipClicked(self, event):
     #     self.clip()
-            
+
     def OnNextClicked(self, event):
         if self.cmdpos<len(self.cmds)-1: self.cmdpos += 1
         self.clip()
         self.refresh()
-        
+
     def OnPrevClicked(self, event):
         if self.cmdpos: self.cmdpos -= 1
         self.clip()
         self.refresh()
-        
-            
+
+
 if __name__ == '__main__':
     main()
