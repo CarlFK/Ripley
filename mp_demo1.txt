@@ -1,0 +1,29 @@
+from machine import Pin, ADC
+p=Pin("D13", Pin.OUT)
+p.value(1)
+
+p.value(0)
+
+p.value()
+
+led0 = Pin("D13", Pin.OUT)
+led1 = Pin("D5", Pin.OUT)
+
+led0.value(1)
+led1.value(1)
+
+led0.value(0)
+led1.value(0)
+
+button0 = Pin("D11", Pin.IN, Pin.PULL_UP)
+button1 = Pin("D12", Pin.IN, Pin.PULL_UP)
+
+button0.value()
+while True:
+ button0.value()
+
+pot0 = pyb.ADC('A0')
+
+while True:
+ pot0 = pyb.ADC('A0')
+
